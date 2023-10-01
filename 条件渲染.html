@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div v-show="isAdult">shenjianZ</div>
+    <div v-if="isAdult">shenjianZ</div>
+    <div v-else-if="!isAdult">qq</div>
+    <div v-else>sss</div>
+</div>
+<script>
+    const vm=new Vue({
+        el:'#root',
+        data:{
+            age:15
+        },
+        computed:{
+            isAdult(){
+                return this.age >= 18;
+            }
+        },
+    })
+</script>
+</body>
+</html>

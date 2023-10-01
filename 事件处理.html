@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+<button v-on:click="showinfo">点击我,无参</button>
+<button @click="showinfo1('shenjianZ',$event)">点击我</button>
+</div>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    let data= {
+        name:'shenjianZ'
+
+    }
+    const vm = new Vue({
+        el: '#root',
+        data,
+        methods:{
+            showinfo:(event)=> {
+                console.log(event)
+                alert('你点击了按钮')
+            },
+            showinfo1:(str,event)=> {
+                console.log(str)
+                alert('你点击了按钮')
+            }
+        }
+    })
+</script>
+</body>
+</html>

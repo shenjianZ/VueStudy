@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    email:<input type="text" v-model="Gmail">  <br/><br/>
+    location:<input type="text" v-model="location1" > <br/><br/>
+    message <span>邮箱：{{Gmail}}-地址：{{location1}} </span><br/><br/>
+    full <span>{{full}} </span>
+
+</div>
+<script>
+    const vm=new Vue({
+        el:'#root',
+        data:{
+            Gmail:'shenjianZ@gmail.com',
+            location1:'北京'
+        },
+        computed:{
+            full:{
+                //get在初次读取、数据发生变化时调用
+                get(){
+                    console.log("get" +
+                        "调用")
+                    return this.Gmail+' ' +this.location1
+                },
+                //set在数据被修改时调用
+                set(value){
+                    const str=value.split(' ')
+                    this.Gmail=str[0]
+                    this.location1=str[1]
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

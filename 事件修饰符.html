@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件修饰符</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .demo1{
+            margin-top:20px;
+
+        }
+        .demo2{
+            margin: 20px;
+            color: blueviolet;
+        }
+        .list{
+            margin: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            overflow: auto;
+        }
+        .li{
+            height: 100px;
+            background-color: orange;
+         }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2>ShenJainZ {{name}}</h2>
+        <!-- 阻止默认事件 -->
+        <a href="http://shenjainl.cn" @click.prevent="info()">点击此处</a>
+        <br/>
+        <!-- 阻止事件冒泡 -->
+        <div class="demo1" @click="info()">
+            <button @click.stop="info()">显示</button>
+        </div>
+<!--        <a href="http://shenjainl.cn" @click.stop="info()">点击此处</a>-->
+        <!-- 事件只触发一次 -->
+        <button @click.once="info()">点击此处</button>
+        <!-- 使用事件的捕获模式 -->
+        <div class="demo2" @click.capture="info()">
+            div1
+            <div @click="info()">
+                div2
+            </div>
+        </div>
+        <!-- 事件的默认行为立即执行，无需等待事件回溯执行完毕 -->
+        <ul @wheel.passive="demo" class="list">
+            <li>dw</li>
+            <li>5</li>
+            <li>2</li>
+            <li>24</li>
+            <li>ddsad</li>
+            <li>2dsd4</li>
+            <li>25</li>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip=false
+        let data={
+            name:'yuyuanzi'
+        }
+        let methods={
+            info(e){
+                alert("请跳转！")
+            },
+            demo(e){
+                for (let i = 0; i < 10000; i++) {
+                    console.log("#")
+                }
+            }
+        }
+        const vm = new Vue({
+            el : '#root',
+            data,
+            methods
+
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定样式</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <style>
+        .basic{
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .normal{
+            font-size: 18px;
+            color: #666;
+            text-align: left;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .sad{
+            font-size: 20px;
+            color: #999;
+            text-align: right;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .happy{
+            font-size: 22px;
+            color:#ff9900;
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .good{
+            font-size: 24px;
+            color: #ddd;
+            text-align: left;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .add1{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            color: #00ff00; /*这是绿色的颜色代码*/
+            text-align: left;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .add2{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            color: #ff0000; /*这是红色的颜色代码*/
+            text-align: right;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .add3{
+            font-family: 'Georgia', serif;
+            font-size: 22px;
+            color: #0000ff; /*这是蓝色的颜色代码*/
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+}
+
+    </style>
+</head>
+<body>
+<div id="root" >
+    <!-- 绑定class样式 字符串写法 -->
+  <div class="basic" :class="mood" @click="changeMood">{{ name }}</div>
+    <br/><br/><br/>
+    <!-- 绑定class样式 数组写法-->
+  <div class="basic" :class="arr" >{{ name }}</div>
+    <br/><br/><br/>
+    <!-- 绑定class样式 对象写法-->
+    <div class="basic" :class="obj" >{{ name }}</div>
+    <!-- 绑定style样式 字符串写法-->
+  <div class="normal" style="color: red;">这是一段文字</div>
+    <!-- 绑定style样式 数组写法-->
+    <div class="normal" :style="styleObj" >这是一段文字</div>
+</div>
+<script type="text/javascript">
+    const vm=new Vue({
+        el:'#root',
+        data: {
+            name: 'shenjianZ',
+            mood: 'normal',
+            arr: ['basic',
+                'normal'
+                , 'sad'
+                , 'happy'
+                , 'good'],
+            obj:{
+                add1:false,
+                add2:false,
+                add3:false
+
+            },
+            styleObj:{
+                fontSize: '22px',
+                color: '#0000ff',
+                textAlign: 'center',
+                padding: '30px',
+                border: '1px',
+                solid :'#ccc',
+                borderRadius: '5px',
+                backgroundColor: '#f9f9f9',
+            }
+        },
+        methods:{
+            changeMood(){
+                const arr=['happy','normal','sad']
+                const index=Math.floor(Math.random()*3)
+                this.mood=arr[index]
+                console.log(this.mood)
+            },
+            changeMood1(){
+                const index=Math.floor(Math.random()*6)
+                this.mood=this.arr[index]
+                console.log(this.mood)
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let number=18
+    let person= {
+        name:'shenjian',
+        sex:'nan'
+    }
+    Object.defineProperty(person,'age',{
+        // value:18,
+        // enumerable:true,
+        // writable:true,
+        // configurable:true
+        get:function (){
+            return number
+        },
+        set(value){
+            number=value
+        }
+    })
+    for (let personKey in person) {
+        console.log('@',person[personKey])
+    }
+    // console.log(person)
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+  <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  <h1>dd{{$options}}}dd</h1>
+  单向数据绑定：<input type="text" v-bind:value="name">
+  <br/>
+  双向数据绑定：<input type="text" v-model:value="name">
+  <br/>
+</div>
+<script type="text/javascript" >
+  Vue.config.productionTip=false
+  const x =new Vue({
+    // el的第一种写法
+    el:'#root',
+
+    //data的第一种写法
+    // data:{
+    //   name:'shenjianZ'
+    // }
+    //data的第二种写法
+    data(){
+      return{
+        name:'shenjianZ'
+      }
+
+    }
+  })
+  // //el的第二种写法
+  // x.$mount('root')
+  // console.log(x)
+</script>
+
+</body>
+</html>
